@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:heatmap_calendar_flutter/heatmap_calendar_flutter.dart';
-import './enums/heatmap_color_mode.dart';
 import './widgets/heatmap_calendar_page.dart';
 import './widgets/heatmap_color_tip.dart';
 import './utils/date_util.dart';
@@ -60,7 +59,6 @@ class HeatMapCalendar extends StatefulWidget {
   /// Default value is [ColorMode.opacity].
   final ColorMode colorMode;
 
-
   /// HeatmapCalendarType changes the UI mode of blocks.
   ///
   /// [HeatmapCalendarType.intensity] requires just the intensity value to change the color
@@ -102,7 +100,7 @@ class HeatMapCalendar extends StatefulWidget {
   final double? colorTipSize;
 
   const HeatMapCalendar({
-    Key? key,
+    super.key,
     required this.colorsets,
     this.colorMode = ColorMode.opacity,
     this.heatmapType = HeatmapCalendarType.intensity,
@@ -125,7 +123,7 @@ class HeatMapCalendar extends StatefulWidget {
     this.colorTipHelper,
     this.colorTipCount,
     this.colorTipSize,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _HeatMapCalendar();
@@ -170,9 +168,7 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
 
         // Text which shows the current year and month
         Text(
-          DateUtil.MONTH_LABEL[_currentDate?.month ?? 0] +
-              ' ' +
-              (_currentDate?.year).toString(),
+          '${DateUtil.MONTH_LABEL[_currentDate?.month ?? 0]} ${_currentDate?.year}',
           style: TextStyle(
             fontSize: widget.monthFontSize ?? 12,
           ),

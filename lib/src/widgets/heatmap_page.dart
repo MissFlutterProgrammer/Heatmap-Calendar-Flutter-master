@@ -1,11 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:heatmap_calendar_flutter/src/data/heatmap_datasets.dart';
 import '../../heatmap_calendar_flutter.dart';
 import './heatmap_month_text.dart';
 import './heatmap_column.dart';
-import '../enums/heatmap_color_mode.dart';
 import '../utils/datasets_util.dart';
 import '../utils/date_util.dart';
 import './heatmap_week_text.dart';
@@ -117,7 +115,7 @@ class HeatMapPage extends StatelessWidget {
         datePos <= _dateDifferent;
         datePos += 7) {
       // Get first day of week by adding cursor's value to startDate.
-      DateTime _firstDay = DateUtil.changeDay(startDate, datePos);
+      DateTime firstDay = DateUtil.changeDay(startDate, datePos);
 
       columns.add(HeatMapColumn(
         // If last day is not saturday, week also includes future Date.
@@ -125,13 +123,13 @@ class HeatMapPage extends StatelessWidget {
         //
         // To make empty space to future day, we have to pass this HeatMapPage's
         // endDate to HeatMapColumn's endDate.
-        startDate: _firstDay,
+        startDate: firstDay,
         endDate: datePos <= _dateDifferent - 7
             ? DateUtil.changeDay(startDate, datePos + 6)
             : endDate,
         colorMode: colorMode,
         heatmapType: heatmapType,
-        numDays: min(endDate.difference(_firstDay).inDays + 1, 7),
+        numDays: min(endDate.difference(firstDay).inDays + 1, 7),
         size: size,
         fontSize: fontSize,
         defaultColor: defaultColor,
@@ -146,7 +144,7 @@ class HeatMapPage extends StatelessWidget {
       ));
 
       // also add first day's month information to _firstDayInfos list.
-      _firstDayInfos.add(_firstDay.month);
+      _firstDayInfos.add(firstDay.month);
     }
 
     return columns;

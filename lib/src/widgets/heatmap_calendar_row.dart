@@ -1,6 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:heatmap_calendar_flutter/heatmap_calendar_flutter.dart';
-import '../enums/heatmap_color_mode.dart';
 import '../utils/datasets_util.dart';
 import './heatmap_container.dart';
 import '../utils/date_util.dart';
@@ -76,7 +77,7 @@ class HeatMapCalendarRow extends StatelessWidget {
   final Function(DateTime, HeatmapData)? onClick;
 
   HeatMapCalendarRow({
-    Key? key,
+    super.key,
     required this.startDate,
     required this.endDate,
     required this.colorMode,
@@ -92,7 +93,7 @@ class HeatMapCalendarRow extends StatelessWidget {
     this.datasets,
     this.maxValue,
     this.onClick,
-  })  : dayContainers = List<Widget>.generate(
+  }) : dayContainers = List<Widget>.generate(
           7,
           // If current week has first day of the month and
           // the first day is not a sunday, it must have extra space on it.
@@ -142,12 +143,13 @@ class HeatMapCalendarRow extends StatelessWidget {
                           // and set opacity value to current day's datasets key
                           // devided by maxValue which is the maximum value of the month.
                           ? colorsets?.values.first.withOpacity((datasets?[
-                                      DateTime(
-                                          startDate.year,
-                                          startDate.month,
-                                          startDate.day +
-                                              i -
-                                              (startDate.weekday % 7))]?.intensity ??
+                                          DateTime(
+                                              startDate.year,
+                                              startDate.month,
+                                              startDate.day +
+                                                  i -
+                                                  (startDate.weekday % 7))]
+                                      ?.intensity ??
                                   1) /
                               (maxValue ?? 1))
                           // Else if colorMode is ColorMode.Color.
@@ -156,18 +158,15 @@ class HeatMapCalendarRow extends StatelessWidget {
                           // Using DatasetsUtil.getColor()
                           : DatasetsUtil.getColor(
                               colorsets,
-                              datasets?[DateTime(
-                                  startDate.year,
-                                  startDate.month,
-                                  startDate.day + i - (startDate.weekday % 7))]?.intensity)
+                              datasets?[DateTime(startDate.year, startDate.month, startDate.day + i - (startDate.weekday % 7))]
+                                  ?.intensity)
                       : null,
                   heatmapData: datasets![DateTime(
                       startDate.year,
                       startDate.month,
                       startDate.day + i - (startDate.weekday % 7))],
                 ),
-        ),
-        super(key: key);
+        );
 
   @override
   Widget build(BuildContext context) {

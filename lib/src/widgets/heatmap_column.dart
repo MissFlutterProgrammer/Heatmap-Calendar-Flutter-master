@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heatmap_calendar_flutter/src/data/heatmap_datasets.dart';
 import '../../heatmap_calendar_flutter.dart';
-import '../enums/heatmap_color_mode.dart';
 import './heatmap_container.dart';
 import '../utils/date_util.dart';
 import '../utils/datasets_util.dart';
@@ -132,9 +130,12 @@ class HeatMapColumn extends StatelessWidget {
                     // and set opacity value to current day's datasets key
                     // devided by maxValue which is the maximum value of the month.
                     ? colorsets?.values.first.withOpacity((datasets?[DateTime(
-                                startDate.year,
-                                startDate.month,
-                                startDate.day + i - (startDate.weekday % 7))]?.intensity ??
+                                    startDate.year,
+                                    startDate.month,
+                                    startDate.day +
+                                        i -
+                                        (startDate.weekday % 7))]
+                                ?.intensity ??
                             1) /
                         (maxValue ?? 1))
                     // Else if colorMode is ColorMode.Color.
@@ -143,12 +144,11 @@ class HeatMapColumn extends StatelessWidget {
                     // Using DatasetsUtil.getColor()
                     : DatasetsUtil.getColor(
                         colorsets,
-                        datasets?[DateTime(startDate.year, startDate.month,
-                            startDate.day + i - (startDate.weekday % 7))]?.intensity)
+                        datasets?[
+                                DateTime(startDate.year, startDate.month, startDate.day + i - (startDate.weekday % 7))]
+                            ?.intensity)
                 : null,
-            heatmapData: datasets![DateTime(
-                startDate.year,
-                startDate.month,
+            heatmapData: datasets![DateTime(startDate.year, startDate.month,
                 startDate.day + i - (startDate.weekday % 7))],
           ),
         ),

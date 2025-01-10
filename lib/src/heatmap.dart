@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:heatmap_calendar_flutter/src/data/heatmap_datasets.dart';
 import '../heatmap_calendar_flutter.dart';
 import './widgets/heatmap_page.dart';
 import './widgets/heatmap_color_tip.dart';
-import './enums/heatmap_color_mode.dart';
 import './utils/date_util.dart';
 
 class HeatMap extends StatefulWidget {
@@ -102,7 +100,7 @@ class HeatMap extends StatefulWidget {
   final double? colorTipSize;
 
   const HeatMap({
-    Key? key,
+    super.key,
     required this.colorsets,
     this.colorMode = ColorMode.opacity,
     this.heatmapType = HeatmapCalendarType.intensity,
@@ -123,7 +121,7 @@ class HeatMap extends StatefulWidget {
     this.colorTipHelper,
     this.colorTipCount,
     this.colorTipSize,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _HeatMap();

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:heatmap_calendar_flutter/heatmap_calendar_flutter.dart';
 
 class HeatMapExample extends StatefulWidget {
-  const HeatMapExample({Key? key}) : super(key: key);
+  const HeatMapExample({super.key});
 
   @override
   State<StatefulWidget> createState() => _HeatMapExample();
@@ -11,7 +11,8 @@ class HeatMapExample extends StatefulWidget {
 
 class _HeatMapExample extends State<HeatMapExample> {
   final TextEditingController dateController = TextEditingController();
-  final TextEditingController heatLevelController = TextEditingController(text: '1');
+  final TextEditingController heatLevelController =
+      TextEditingController(text: '1');
 
   bool isOpacityMode = true;
 
@@ -31,11 +32,21 @@ class _HeatMapExample extends State<HeatMapExample> {
         controller: controller,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xffe7e7e7), width: 1.0)),
+            borderSide: BorderSide(
+              color: Color(0xffe7e7e7),
+              width: 1.0,
+            ),
+          ),
           focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xFF20bca4), width: 1.0)),
+            borderSide: BorderSide(
+              color: Color(0xFF20bca4),
+              width: 1.0,
+            ),
+          ),
           hintText: hint,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(
+            color: Colors.grey,
+          ),
           isDense: true,
         ),
       ),
@@ -72,7 +83,12 @@ class _HeatMapExample extends State<HeatMapExample> {
                   },
                   onClick: (value, heatmapData) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('$value : ${heatmapData?.intensity}')));
+                      SnackBar(
+                        content: Text(
+                          '$value : ${heatmapData.intensity}',
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -84,7 +100,11 @@ class _HeatMapExample extends State<HeatMapExample> {
               onPressed: () {
                 setState(() {
                   heatMapDatasets[DateTime.parse(dateController.text)] =
-                      HeatmapData(intensity: int.parse(heatLevelController.text));
+                      HeatmapData(
+                    intensity: int.parse(
+                      heatLevelController.text,
+                    ),
+                  );
                 });
               },
             ),

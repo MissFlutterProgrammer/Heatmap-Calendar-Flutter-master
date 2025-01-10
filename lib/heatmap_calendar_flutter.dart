@@ -1,4 +1,4 @@
-library heatmap_calendar_flutter;
+library;
 
 export 'src/heatmap.dart';
 export 'src/heatmap_calendar.dart';
