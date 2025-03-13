@@ -105,13 +105,13 @@ class _HeatMapCalendarExample extends State<HeatMapCalendarExample> {
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Color(0xffe7e7e7),
-              width: 1.0,
+              width: 1,
             ),
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Color(0xFF20bca4),
-              width: 1.0,
+              width: 1,
             ),
           ),
           hintText: hint,

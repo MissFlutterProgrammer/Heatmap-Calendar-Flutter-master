@@ -71,10 +71,11 @@ class DateUtil {
       savedMonth.add({startDate: endDate});
       startDate = changeDay(endDate, 1);
       endDate = changeDay(
-          endDate,
-          endDayOfMonth(endDate).day - startDate.day >= DAYS_IN_WEEK
-              ? DAYS_IN_WEEK
-              : endDayOfMonth(endDate).day - startDate.day + 1);
+        endDate,
+        endDayOfMonth(endDate).day - startDate.day >= DAYS_IN_WEEK
+            ? DAYS_IN_WEEK
+            : endDayOfMonth(endDate).day - startDate.day + 1,
+      );
     }
     return savedMonth;
   }

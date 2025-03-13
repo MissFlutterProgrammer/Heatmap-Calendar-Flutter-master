@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import '../../heatmap_calendar_flutter.dart';
 import '../data/heatmap_color.dart';
@@ -91,20 +90,23 @@ class HeatMapColorTip extends StatelessWidget {
         spacing: 4.0,
         runSpacing: 2,
         children: heatmapWidgetLegends!
-            .map((legendData) => Chip(
-                  label: _defaultText(legendData.label),
-                  // color: MaterialStateProperty.all(null),
-                  color: WidgetStateProperty.all(const Color(0x00000000)),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: const BorderSide(
-                        color: Colors.transparent,
-                        width: 0), // Transparent border
-                  ),
-                  labelPadding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 2),
-                  avatar: legendData.child,
-                ))
+            .map(
+              (legendData) => Chip(
+                label: _defaultText(legendData.label),
+                // color: MaterialStateProperty.all(null),
+                color: WidgetStateProperty.all(const Color(0x00000000)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: const BorderSide(
+                    color: Colors.transparent,
+                    width: 0,
+                  ), // Transparent border
+                ),
+                labelPadding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 2),
+                avatar: legendData.child,
+              ),
+            )
             .toList(),
       );
     }

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import '../../heatmap_calendar_flutter.dart';
 import './heatmap_container.dart';
@@ -83,7 +85,7 @@ class HeatMapColumn extends StatelessWidget {
   final int numDays;
 
   HeatMapColumn({
-    Key? key,
+    super.key,
     required this.startDate,
     required this.endDate,
     required this.colorMode,
@@ -130,11 +132,10 @@ class HeatMapColumn extends StatelessWidget {
                     // and set opacity value to current day's datasets key
                     // devided by maxValue which is the maximum value of the month.
                     ? colorsets?.values.first.withOpacity((datasets?[DateTime(
-                                    startDate.year,
-                                    startDate.month,
-                                    startDate.day +
-                                        i -
-                                        (startDate.weekday % 7))]
+                              startDate.year,
+                              startDate.month,
+                              startDate.day + i - (startDate.weekday % 7),
+                            )]
                                 ?.intensity ??
                             1) /
                         (maxValue ?? 1))
@@ -144,8 +145,8 @@ class HeatMapColumn extends StatelessWidget {
                     // Using DatasetsUtil.getColor()
                     : DatasetsUtil.getColor(
                         colorsets,
-                        datasets?[
-                                DateTime(startDate.year, startDate.month, startDate.day + i - (startDate.weekday % 7))]
+                        datasets?[DateTime(startDate.year, startDate.month,
+                                startDate.day + i - (startDate.weekday % 7))]
                             ?.intensity)
                 : null,
             heatmapData: datasets![DateTime(startDate.year, startDate.month,
@@ -161,8 +162,7 @@ class HeatMapColumn extends StatelessWidget {
                     width: size ?? 42,
                     height: size ?? 42),
               )
-            : [],
-        super(key: key);
+            : [];
 
   @override
   Widget build(BuildContext context) {
