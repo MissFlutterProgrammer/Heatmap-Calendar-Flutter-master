@@ -98,7 +98,7 @@ class _HeatMapCalendarExample extends State<HeatMapCalendarExample> {
 
   Widget _textField(final String hint, final TextEditingController controller) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 20, top: 8.0),
+      padding: const EdgeInsets.only(left: 16, right: 20, top: 8),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
